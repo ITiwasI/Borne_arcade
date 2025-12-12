@@ -1,0 +1,7 @@
+Notes projet
+
+-- IDEES
+
+Bibliothèque de jeux
+Le pc n'est qu'un écran
+Des boutons pour interagir (haut bas gauche droite, au moins 2actions)
