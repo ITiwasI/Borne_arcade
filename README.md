@@ -1,2 +1,2 @@
 # BE_POO_Template
-Projet de base pour Ardouino
+Projet de base pour Arduino
