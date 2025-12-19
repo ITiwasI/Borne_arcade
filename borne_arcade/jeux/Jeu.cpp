@@ -4,12 +4,10 @@
  * @brief Fichier source de l'application
  *********************************************************************/
 #include "Application.h"
-#include "jeux\Jeu.h"
-#include "composants\Composant.h"
+
 
 Application::Application()
 {
-  // Init Composants physiques
   // Selection de jeux
   // Finalite : faire un jeu.init
   ; 
