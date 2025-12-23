@@ -35,31 +35,31 @@ void loop() {
     lcd.print("JoueurAct: ");
     lcd.print(CurrentPlayer);
 
+    push = 1;
     lcd.setCursor(0, 1);
     lcd.print("ColonneAct: ");
-    lcd.print(1);
+    lcd.print(push);
 
-    push = 1;
     while (digitalRead(buttonSelect) == 0)
     {
       if (digitalRead(buttonNext) == 0) {
         delay(150);
         if (digitalRead(buttonNext) == 1) {
           push += 1;
+          if (push > 7)
+          {
+            push = 1;
+          }
           lcd.setCursor(0, 1);
           lcd.print("ColonneAct: ");
           lcd.print(push);
         }
       }
-      if (push == 7)
-      {
-        push = 0;
-      }
     }
     
     delay(500);
 
-    grid4.AddPiece(CurrentPlayer, push);
+    grid4.AddPiece(CurrentPlayer, push-1);
     grid4.DisplayGrid();
     if (CurrentPlayer == 'A')
     {CurrentPlayer = 'B';}

@@ -38,28 +38,25 @@ void Grid::DisplayGrid()
 
 void Grid::AddPiece(char Player, int C) 
 {
-    int i = 0;
-    int i_max = 5; 
-    while ((i <= i_max) and ((grid[5-i]->elements[C-1]) != '-'))
-    {i += 1;}
-    if (i == 6) 
+    for (int i=5; i>=0; i--)
     {
-        Serial.println("Colonne deja remplie !");
-    }
-    else
-    {
-        switch (Player)
+        if (grid[i]->elements[C] == '-')
         {
-            case 'A':
-            grid[5-i]->elements[C-1] = 'X';
-            break;
-            case 'B':
-            grid[5-i]->elements[C-1] = 'O';
-            break;
+            switch (Player)
+            {
+                case 'A':
+                    grid[i]->elements[C] = 'X';
+                    break;
+                case 'B':
+                    grid[i]->elements[C] = 'O';
+                    break;
+            }
+            return;
         }
-        
     }
+    Serial.println("Colonne deja remplie !");
 }
+
 
 bool Grid::isGridFull()
 {

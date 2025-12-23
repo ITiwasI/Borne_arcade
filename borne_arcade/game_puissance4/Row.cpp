@@ -13,10 +13,7 @@ Row::Row()
 
 Row::~Row()
 {
-    for (int i=0; i<dim; i++)
-    {
-        delete[] elements;
-    }
+    delete[] elements;
 }
 
 void Row::DisplayRow()
