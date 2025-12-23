@@ -1,0 +1,31 @@
+#include <Arduino.h>
+#include "Row.hpp"
+
+Row::Row()
+{
+    dim = 7;
+    elements = new char[dim];
+    for (int i=0; i<dim; i++) 
+    {
+        elements[i] = '-';
+    }
+}
+
+Row::~Row()
+{
+    for (int i=0; i<dim; i++)
+    {
+        delete[] elements;
+    }
+}
+
+void Row::DisplayRow()
+{
+    for (int i=0; i<dim; i++)
+    {
+        Serial.print(elements[i]);
+        Serial.print(" ");
+    }
+    Serial.println(" ");
+}
+

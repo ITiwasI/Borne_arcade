@@ -11,3 +11,5 @@ Donc une classe bibliothèque ,
 une classe jeux 
 Méthode start()
 close()
+
+couleur est un attribut
