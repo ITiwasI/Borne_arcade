@@ -1,13 +1,16 @@
 #ifndef GAME_H_
 #define GAME_H_
     
-class Game
+class game
 {
   public :
-    Game();
-    ~Game();    
+    game();
+    ~game();    
     
     virtual void init(void);
     virtual void run(void);
+    
+  protected :
+    bool _quit;
 };
 #endif

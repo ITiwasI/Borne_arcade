@@ -4,7 +4,7 @@ Mon style d'ecriture :
 ├ variabes de fonctions : (libre)
 └ fonctions de classes : nomCompose()
 
-Application : classe principale du programme
+application : classe principale du programme
 ├ elle contient des objets pour les boutons, joystick eventuellement
 ├ init():
 │  ├ met les var internes a 0
@@ -13,4 +13,15 @@ Application : classe principale du programme
    ├ pour la selection de jeu
    ├ des qu'un jeu est selec, init le jeu (fait passer les compo en argument), run bloquant
    └ affiche serial les infos, a recup sur l'ordi
-	
+
+J'utilise des fonctions privees pour simplifier le run()
+
+26/12 : Structure des .h et .cpp : 
+└  3 options
+   ├ Tout mettre dans le meme dossier (bof)
+   ├ Creer une bibliotheque externe (libraries) donc include <> (bof)
+   └ Exploiter le linker Arduino en mettant les fichiers second. dans le src/ donc include "" (yes)
+     └ Permet d'avoir une hierarchie de fichiers, mais pas trop (pas possible de faire un dossier
+       dedie aux jeux, un aux compo car les jeux doivent appeler les compo (ceux en plus des 3 boutons)
+       Donc jeux+compos dans le dossier, tout le reste qui peut etre hierarchise peut etre dans un
+       dossier a part.

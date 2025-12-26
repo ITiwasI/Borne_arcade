@@ -1,13 +1,15 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
-#include "src/components/button.h"
+#include "src/button.h"
+#include "src/game.h"
+#include "src/testGame.h"
 
-class Application
+class application
 {
   public :
-    Application();
-    ~Application();
+    application();
+    ~application();
 
     void init(void);
     void run(void);
@@ -18,13 +20,14 @@ class Application
     short _lastButtonState;
     int _pressTime;
 
-    button upButton;
-    button downButton;
     button leftButton;
     button rightButton;
     button centerButton;
 
+    game currentGame;
+
     void updateSelector();
+    void runGame();
 
 };
 #endif

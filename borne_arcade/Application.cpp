@@ -1,9 +1,7 @@
-#include "Application.h"
+#include "application.h"
 
 //────────────────────────────── Pin planning
 
-#define UP_BUTTON_PIN     3
-#define DOWN_BUTTON_PIN   4
 #define LEFT_BUTTON_PIN   5
 #define RIGHT_BUTTON_PIN  6
 #define CENTER_BUTTON_PIN 7
@@ -14,12 +12,12 @@
 
 //────────────────────────────── Constructor/Destructor
 
-Application::Application() {}
-Application::~Application() {}
+application::application() {}
+application::~application() {}
 
 //────────────────────────────── Actually used functions
 
-void Application::init(void) {
+void application::init(void) {
   // Variable init
   _selector = 0;
   _lastButtonState = 0;
@@ -31,15 +29,13 @@ void Application::init(void) {
   Serial.println("Starting communication");
 
   // Hadware objects init
-  upButton.init(UP_BUTTON_PIN);
-  downButton.init(DOWN_BUTTON_PIN);
   leftButton.init(LEFT_BUTTON_PIN);
   rightButton.init(RIGHT_BUTTON_PIN);
   centerButton.init(CENTER_BUTTON_PIN);
   Serial.println("Hardware ready");
 }
 
-void Application::updateSelector() {
+void application::updateSelector() {
   /* 
    * Behavior : ups the value on rising right click,
    * Holding it for more than 1 sec uninterrupted make it scroll
@@ -86,7 +82,15 @@ void Application::updateSelector() {
   }
 }
 
-void Application::run(void) {
+void application::runGame(void) {
+  if (_selector == 0) {
+    currentGame = testGame();
+    currentGame.init(&leftButton, &rightButton);
+  }
+  
+}
+
+void application::run(void) {
   // Keep track of time to get exactly 50ms ticks
   unsigned long t0 = millis();
 
@@ -96,14 +100,9 @@ void Application::run(void) {
 
   // Game selection detection
   if (centerButton.isPressed()) {
-    switch (_selector) {
-      case 1:
-        // Launch game 1...
-        break;
-      default :
-        // Game 0
-        break;
-    }
+    Serial.print("runGame");
+    Serial.println(_selector);
+    runGame();
   }
 
   // Delay 50ms total, minimum 5ms in case of scroll
