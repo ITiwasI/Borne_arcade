@@ -41,11 +41,12 @@ J'utilise des fonctions privees pour simplifier le run()
 │  │  │  ├─ fonction deplacement_possibles (afficher ce qui est possible a l'utilisateur)
 │  │  │  │  re-definissable pour toutes les pieces (virtual)
 │  │  │  │  Maximum 27 donc 27*6/8=20 octets pour tout stocker au plus compak bof, autant appeler
-│  │  │  │  la fct suivante 63 fois
+│  │  │  │  la fct suivante 63 fois (oui oui tkt)
 │  │  │  ├─ fonction deplacement_valide (tester le deplacement voulu par utilisateur)
 │  │  │  ├─ Changement du plateau depuis le jeu, appel d'un setter, et destruction des pieces mangees
 │  │  │  ├─ On peut utiliser comme dans un td une liste propre a la classe piece
 │  │  │  │  
+
 
 * Code pour determiner si sur meme diagonale
 

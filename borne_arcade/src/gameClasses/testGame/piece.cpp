@@ -12,6 +12,9 @@ piece::~piece() {
   _pieceCount--;
 }
 
+bool piece::canMoveTo(uint8_t nx, uint8_t ny) {
+    return false;  // Implémentation par défaut
+}
 
 uint8_t piece::getId() {
   return _id;

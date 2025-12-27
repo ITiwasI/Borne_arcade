@@ -7,7 +7,7 @@
 class king : public piece {
   public :
     king(bool wh, uint8_t px, uint8_t py);
-    ~queen();
+    ~king();
 
     // Is move legal w/ regards to pieces
     bool canMoveTo(uint8_t nx, uint8_t ny);
