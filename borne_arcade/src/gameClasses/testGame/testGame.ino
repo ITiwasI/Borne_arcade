@@ -6,43 +6,105 @@
 #include "queen.h"
 #include "piece.h"
 
-pawn pa(true, 2, 2);
-bishop bi(true, 3, 3);
-knight kn(true, 3, 3);
-rook ro(true, 3, 3);
-queen qu(true, 3, 3);
-king ki(true, 3, 3);
+// Static white pieces declaration
+pawn   wpa1(true, 1, 2), wpa2(true, 2, 2), wpa3(true, 3, 2), wpa4(true, 4, 2);
+pawn   wpa5(true, 5, 2), wpa6(true, 6, 2), wpa7(true, 7, 2), wpa8(true, 8, 2);
+bishop wbi1(true, 3, 1), wbi2(true, 6, 1);
+knight wkn1(true, 2, 1), wkn2(true, 7, 1);
+rook   wro1(true, 1, 1), wro2(true, 8, 1);
+queen  wqu(true, 4, 1);
+king   wki(true, 5, 1);
 
-piece *l_piece[6] = {
-  &pa,
-  &bi,
-  &kn,
-  &ro,
-  &qu,
-  &ki
+pawn   bpa1(true, 1, 7), bpa2(true, 2, 7), bpa3(true, 3, 7), bpa4(true, 4, 7);
+pawn   bpa5(true, 5, 7), bpa6(true, 6, 7), bpa7(true, 7, 7), bpa8(true, 8, 7);
+bishop bbi1(true, 3, 8), bbi2(true, 6, 8);
+knight bkn1(true, 2, 8), bkn2(true, 7, 8);
+rook   bro1(true, 1, 8), bro2(true, 8, 8);
+queen  bqu(true, 4, 8);
+king   bki(true, 5, 8);
+
+// Assembled into a list for piece iteration
+piece *wh_piece[16] = {
+  &wpa1, &wpa2, &wpa3, &wpa4, &wpa5, &wpa6, &wpa7, &wpa8,
+  &wro1, &wkn1, &wbi1, &wqu,  &wki,  &wbi2, &wkn2, &wro2
 };
+piece *bl_piece[16] = {
+  &bpa1, &bpa2, &bpa3, &bpa4, &bpa5, &bpa6, &bpa7, &bpa8,
+  &bro1, &bkn1, &bbi1, &bqu,  &bki,  &bbi2, &bkn2, &bro2
+};
+
+void printBoard() {
+  Serial.print("Board :\n┌⸺⸺⸺⸺┐\n");
+                        //⸺⸺⸺⸺
+  uint8_t tpx=0;
+  uint8_t tpy=0;
+  for (int ny = 8; ny >=1; ny--)
+  {
+    Serial.print("│");
+    for (int nx = 1; nx <= 8; nx++)
+    {
+      uint8_t wi=0;
+      while (wi < 16)
+      {
+        // White pieces check
+        tpx = wh_piece[wi]->getPos()/10;
+        tpy = wh_piece[wi]->getPos()%10;
+        if (tpx == nx && tpy == ny)
+        { // Matching board position and piece position
+          switch(wh_piece[wi]->getId())
+          {
+            case 1: Serial.print("♙"); break;
+            case 2: Serial.print("♘"); break;
+            case 3: Serial.print("♗"); break;
+            case 4: Serial.print("♖"); break;
+            case 5: Serial.print("♕"); break;
+            case 6: Serial.print("♔"); break;
+            default: break;     //﹘
+          }
+          break;
+        }
+        wi++;
+      }
+      uint8_t bi=0;
+      while (bi < 16)
+      {
+        // Black pieces check
+        tpx = bl_piece[bi]->getPos()/10;
+        tpy = bl_piece[bi]->getPos()%10;
+        if (tpx == nx && tpy == ny)
+        { // Matching board position and piece position
+          switch(bl_piece[bi]->getId())
+          {
+            case 1: Serial.print("♟"); break;
+            case 2: Serial.print("♞"); break;
+            case 3: Serial.print("♝"); break;
+            case 4: Serial.print("♜"); break;
+            case 5: Serial.print("♛"); break;
+            case 6: Serial.print("♚"); break;
+            default: break;     //﹘
+          }
+          break;
+        }
+        bi++;
+      }
+      if (wi == 16 && bi == 16)   // If not broken in either loop
+      {  
+        Serial.print("﹘");
+      }
+    }
+    Serial.println("│");
+  }
+  Serial.print("└⸺⸺⸺⸺┘\n");
+}
 
 void setup() {
   Serial.begin(115200);
+  delay(3000);
 }
 
 void loop() {
-  for (int e=0; e<6; e++) {
-    Serial.println(l_piece[e]->getId());
-
-    uint8_t posX = l_piece[e]->getPos()/10;
-    uint8_t posY = l_piece[e]->getPos()%10;
-    for (int ny = 8; ny >=1; ny--) {
-      for (int nx = 1; nx <= 8; nx++) {
-        if (posX == nx && posY == ny)           Serial.print("⯀");  // Cursor on the piece
-        else if (l_piece[e]->canMoveTo(nx,ny))  Serial.print("⮽"); 
-        else                                    Serial.print("☐");
-      }
-      Serial.println();
-    }
-    Serial.println();
-    Serial.println();
-  }
+  printBoard();
+  Serial.println();
   
   delay(10000);
 }
