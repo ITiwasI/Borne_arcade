@@ -5,7 +5,7 @@
 #include "../components/button.h"
 
 class puissance4 : public game {
-  pulic : 
+  public : 
     puissance4();
     ~puissance4();
 

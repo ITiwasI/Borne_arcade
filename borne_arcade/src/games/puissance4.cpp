@@ -1,8 +1,10 @@
 #include "puissance4.hpp"
 #include "puissance4/grid.hpp"
 
-puissance4::puissance4() : _buttonSet(false) {}
-puissance4::~puissance4() {}
+puissance4::puissance4() : _buttonSet(false) {
+}
+puissance4::~puissance4() {
+}
 
 void puissance4::init() {
     _quit = false;
