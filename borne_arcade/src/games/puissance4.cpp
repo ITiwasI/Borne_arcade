@@ -1,10 +1,10 @@
-#include "gamePuissance4.hpp"
-#include "grid.hpp"
+#include "puissance4.hpp"
+#include "puissance4/grid.hpp"
 
-gamePuissance4::gamePuissance4() : _buttonSet(false) {}
-gamePuissance4::~gamePuissance4() {}
+puissance4::puissance4() : _buttonSet(false) {}
+puissance4::~puissance4() {}
 
-void gamePuissance4::init() {
+void puissance4::init() {
     _quit = false;
     _lastButtonState = 0;
 
@@ -15,7 +15,7 @@ void gamePuissance4::init() {
 }
 
 
-void gamePuissance4::run(void) {
+void puissance4::run(void) {
   while (!_quit) {
     
     while ((grid4.isGridFull() != 1) and (grid4.isWinner() == '/')) 

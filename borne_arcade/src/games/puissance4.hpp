@@ -1,12 +1,12 @@
-#ifndef _gamePuissance4_hpp_
-#define _gamePuissance4_hpp_
+#ifndef _puissance4_hpp_
+#define _puissance4_hpp_
 
 #include "button.h"
 
-class gamePuissance4 : public game {
+class puissance4 : public game {
   pulic : 
-    gamePuissance4();
-    ~gamePuissance4();
+    puissance4();
+    ~puissance4();
 
     void init(&leftButton, &rightButton, &upButton, &downButton, &centerButton);
     void run(void);
