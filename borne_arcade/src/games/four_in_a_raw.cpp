@@ -45,7 +45,13 @@ void four_in_a_raw::showBoard() {
 
 void four_in_a_raw::init(void) {
     end = false;
-    joystick_four_in_a_raw.init();
+
+    button_left.init(2);
+    button_right.init(5);
+    button_up.init(6);
+    button_down.init(3);
+    button_select.init(4);
+
     Serial.println("Initializing Four In A Row game...");
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 7; j++) {
@@ -68,7 +74,7 @@ void four_in_a_raw::endGame() {
     Serial.println("Game Over. To restart the game press the button.");
     int restart=0;
     while(restart==0){
-        if (joystick_four_in_a_raw.isButtonPressed()){
+        if (button_select.isPressed()){
             restart=1;
             this->init();
         }
@@ -84,7 +90,7 @@ void four_in_a_raw::run(void) {
     int position = 0;
     int last_piece_row = -1;
     int last_piece_col = -1;
-    if (joystick_four_in_a_raw.isButtonPressed()) {
+    if (button_select.isPressed()) {
         change = true;
         // Placeholder for drop logic: find placement cursor for current player
         for (int j = 0; j < 7; j++) {
@@ -197,11 +203,11 @@ void four_in_a_raw::run(void) {
         delay(300); // Debounce delay for button press
         change = true;
     }
-    if (joystick_four_in_a_raw.readInputX() > 100) {
+    if (button_right.isPressed()) {
         moveRight();
         change = true;
     }
-    if(joystick_four_in_a_raw.readInputX() < -100) {
+    if(button_left.isPressed()) {
         moveLeft();
         change = true;
     }
