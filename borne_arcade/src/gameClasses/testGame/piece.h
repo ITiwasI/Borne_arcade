@@ -8,7 +8,7 @@ class piece {
     piece(uint8_t id, bool wh, uint8_t px, uint8_t py);
     ~piece();
     
-    virtual bool canMoveTo(uint8_t nx, uint8_t ny);
+    virtual bool canMoveTo(uint8_t nx, uint8_t ny)=0;
 
     uint8_t getId();
     uint8_t getPos();

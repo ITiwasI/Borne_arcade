@@ -5,6 +5,12 @@ button::button() : component(1), _pin(-1), _pullUp(false) {}
   
 button::~button() {}
 
+void button::init() {
+  _pin = 2;
+  _pullUp = false;
+  pinMode(2, INPUT);
+}
+
 void button::init(int p) {
   _pin = p;
   _pullUp = false;

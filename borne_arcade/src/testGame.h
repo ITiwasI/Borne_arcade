@@ -9,8 +9,7 @@ class testGame : public game {
     testGame();
     ~testGame();
     
-    void init(&leftButton, &rightButton);
-    void initButton(button *leftB, button *rightB);
+    void init(button *leftButton, button *rightButton) override;
     void selectorUpdate(void);
     void run(void);
 

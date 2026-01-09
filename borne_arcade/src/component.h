@@ -6,7 +6,7 @@ class component
   public :
     component(int id);
     ~component();
-    //virtual void init();
+    virtual void init()=0;
   protected :
     int _id;
 	

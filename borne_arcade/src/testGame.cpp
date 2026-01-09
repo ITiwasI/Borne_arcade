@@ -13,7 +13,7 @@ testGame::~testGame() {}
 
 //────────────────────────────── Virtual functions override
 
-void testGame::init() {
+void testGame::init(button *leftB, button *rightB) {
   // Allows the game to be run
   _quit = false;
 
@@ -21,12 +21,6 @@ void testGame::init() {
   _gridY = 0;
   _lastButtonState = 0;
   // 0 is nothing, 1 is right, 2 is up, -1 is left and -2 is down
-}
-
-void testGame::initButton(button *leftB, button *rightB){
-  leftButton = *leftB;
-  rightButton = *rightB;
-  _buttonSet = true;
 }
 
 short mm(short value, short min, short max) {
@@ -61,7 +55,6 @@ void testGame::selectorUpdate() {
 void testGame::run() {
   while (!_quit) {
     selectorUpdate();
-
   }
   Serial.println("quit");
 }

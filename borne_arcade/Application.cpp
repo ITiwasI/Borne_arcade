@@ -3,8 +3,8 @@
 //────────────────────────────── Pin planning
 
 #define LEFT_BUTTON_PIN   2
-#define RIGHT_BUTTON_PIN  4
-#define CENTER_BUTTON_PIN 3
+#define RIGHT_BUTTON_PIN  5
+#define CENTER_BUTTON_PIN 4
 
 //────────────────────────────── Menu variables
 
@@ -53,8 +53,9 @@ void application::updateSelector() {
 
 void application::runGame(void) {
   if (_selector == 0) {
-    currentGame = testGame();
-    currentGame.init(&leftButton, &rightButton);
+    Serial.println("");
+    //currentGame = testGame();
+    //currentGame.init(&leftButton, &rightButton);
   }  
 }
 

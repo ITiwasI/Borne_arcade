@@ -19,9 +19,7 @@ class application
     int8_t _selector;
     short _lastButtonState;
 
-    button leftButton;
-    button rightButton;
-    button centerButton;
+    button upButton, downButton, leftButton, rightButton, centerButton;
 
     game currentGame;
 
