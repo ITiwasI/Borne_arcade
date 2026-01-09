@@ -1,7 +1,7 @@
 #ifndef FOUR_IN_A_RAW_H_
 #define FOUR_IN_A_RAW_H_
 #include "game.h"
-#include "../components/joystick.h"
+#include "../components/button.h"
 
 
 class four_in_a_raw : public game {
@@ -9,7 +9,11 @@ class four_in_a_raw : public game {
         int board[7][7];// 6x7 board for Four In A Row and an extra row for placement logic
         bool end;
     public :
-        joystick joystick_four_in_a_raw;
+        button button_left;
+        button button_right;
+        button button_select;
+        button button_up;
+        button button_down;
         int player;
         four_in_a_raw();
         ~four_in_a_raw();
