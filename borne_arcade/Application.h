@@ -4,6 +4,7 @@
 #include "src/components/joystick.h"
 #include "src/components/button.h"
 #include "src/games/four_in_a_raw.h"
+#include "src/games/puissance4.hpp"
 
 
 class application
@@ -16,6 +17,7 @@ class application
     void run(void);
     
     four_in_a_raw game_four_in_a_raw;
+    puissance4 game_puissance4;
 };
 #endif // APPLICATION_H_
 

@@ -5,21 +5,19 @@
 #include "../components/button.h"
 
 class puissance4 : public game {
+  private :
+    bool end;
+  
   public : 
     puissance4();
     ~puissance4();
 
-    void init(&leftButton, &rightButton, &upButton, &downButton, &centerButton);
+    void init(void);
     void run(void);
     
-  private :
-    button leftButton;
     button rightButton;
-    button upButton;
-    button downButton;
     button centerButton;
-    bool _buttonSet;
-    short _lastButtonState;
+      
     
   };
 
