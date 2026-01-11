@@ -11,7 +11,7 @@ class rook : public piece {
     ~rook();
 
     // Is move legal w/ regards to pieces
-    bool canMoveTo(uint8_t nx, uint8_t ny) override;
+    bool canMoveTo(uint8_t nx, uint8_t ny, piece *(&board)[9][9]) override;
     
 };
 #endif

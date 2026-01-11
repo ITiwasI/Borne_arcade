@@ -14,9 +14,9 @@ piece::~piece() {
   _pieceCount--;
 }
 
-/*bool piece::canMoveTo(uint8_t nx, uint8_t ny) {
-  return false;  // Implémentation par défaut
-}*/
+bool piece::isInBounds(uint8_t x, uint8_t y) {
+  return !(x < 1 || x > 8 || y < 1 || y > 8);
+}
 
 uint8_t piece::getId() {
   return _id;

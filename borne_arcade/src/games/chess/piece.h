@@ -9,7 +9,8 @@ class piece {
     piece(uint8_t id, bool wh, uint8_t px, uint8_t py);
     ~piece();
     
-    virtual bool canMoveTo(uint8_t nx, uint8_t ny)=0;
+    virtual bool canMoveTo(uint8_t nx, uint8_t ny, piece *(&board)[9][9])=0;
+    static  bool isInBounds(uint8_t x, uint8_t y);
 
     uint8_t getId();
     uint8_t getPos();

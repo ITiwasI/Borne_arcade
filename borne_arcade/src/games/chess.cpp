@@ -9,8 +9,7 @@ wbi1(true,  3, 1), wbi2(true,  6, 1), bbi1(false, 3, 8), bbi2(false, 6, 8),
 wkn1(true,  2, 1), wkn2(true,  7, 1), bkn1(false, 2, 8), bkn2(false, 7, 8),
 wro1(true,  1, 1), wro2(true,  8, 1), bro1(false, 1, 8), bro2(false, 8, 8),
 wqu(true,  4, 1),  bqu(false, 4, 8),
-wki(true,  5, 1),  bki(false, 5, 8)
-{}
+wki(true,  5, 1),  bki(false, 5, 8) {}
 chess::~chess() {}
 
 // Override time
@@ -36,15 +35,20 @@ bool chess::isMyPiece(uint8_t x, uint8_t y) {
 }
 
 bool chess::isMoveLegal() {
-  // Picked(x,y) has to be set because _picked==true to call this
+  /*
+   Assumptions : _picked(X,Y) points to a piece 
+   (isMyturn falses empty squares, _picked assures x,y to be something inside the board) 
+
+   isMoveLegal ensures most of the chess rules :
+   - can't stall a turn (piece must move)
+   - calls the picked piece method with the board info to (dis)approve the move
+  
+  */
 
   // If back to the same place, don't consider it as a legal move
   if (_pickedX==_selX && _pickedY==_selY) return false;
-
-  // Pawn 1, Knight 2, Bishop 3, Rook 4, Queen 5, King 6
-  uint8_t pieceID = board[_pickedY][_pickedX]->getId();
   
-  return board[_pickedY][_pickedX]->canMoveTo(_selX, _selY);
+  return board[_pickedY][_pickedX]->canMoveTo(_selX, _selY, board);
 }
 
 void chess::makeTheMove() {
@@ -127,7 +131,7 @@ void chess::printBoard(bool showSelector) {
       // If picked piece can go here (null test should be useless because of isMyTurn())
       else if (showSelector && board[_pickedY][_pickedX] != nullptr)
       {
-        if(_picked && board[_pickedY][_pickedX]->canMoveTo(nx, ny)) {Serial.print("⌧"); didPrint = true;}
+        if(_picked && board[_pickedY][_pickedX]->canMoveTo(nx, ny, board)) {Serial.print("⌧"); didPrint = true;}
       }
       // If piece and not anything above
       if (!didPrint && board[ny][nx]!=nullptr)
