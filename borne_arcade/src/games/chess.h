@@ -20,7 +20,7 @@ class chess : public game {
     void init(void) override;
     void run(void) override;
 
-    void checkButtons();
+    void checkButtons(bool showAction);
     void checkButtonTimed(unsigned long deltaT);
     void printBoard(bool showSelector); 
 
@@ -35,7 +35,20 @@ class chess : public game {
     king   wki,  bki;
 
     // Don't wanna bother with index starting at 0,0 for pos a1
-    piece *board[9][9] = {
+    piece *_board[9][9] = {
+      nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
+      nullptr, &wro1,   &wkn1,   &wbi1,   &wqu,    &wki,    &wbi2,   &wkn2,   &wro2,
+      nullptr, &wpa1,   &wpa2,   &wpa3,   &wpa4,   &wpa5,   &wpa6,   &wpa7,   &wpa8,
+      nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
+      nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
+      nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
+      nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
+      nullptr, &bpa1,   &bpa2,   &bpa3,   &bpa4,   &bpa5,   &bpa6,   &bpa7,   &bpa8,
+      nullptr, &bro1,   &bkn1,   &bbi1,   &bqu,    &bki,    &bbi2,   &bkn2,   &bro2
+    };
+
+    // Copy of the initial board to reset game
+    piece *_boardInit[9][9] = {
       nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
       nullptr, &wro1,   &wkn1,   &wbi1,   &wqu,    &wki,    &wbi2,   &wkn2,   &wro2,
       nullptr, &wpa1,   &wpa2,   &wpa3,   &wpa4,   &wpa5,   &wpa6,   &wpa7,   &wpa8,
@@ -49,10 +62,13 @@ class chess : public game {
 
     bool isMoveLegal();
     void makeTheMove();
+    uint8_t calculatePoints(bool white);
+    int8_t checkWinner();
     bool _whiteTurn = true;
+    bool _gameDone = false;
 
 
-    // Buttons to interacts
+    // Buttons to interact
     button upButton, downButton, leftButton, rightButton, centerButton;
     
     // Button status
