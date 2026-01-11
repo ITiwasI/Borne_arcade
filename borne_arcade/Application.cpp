@@ -55,8 +55,8 @@ void application::run(void) {
     }
     if (button_down.isPressed()) {
       selected_game++;
-      if (selected_game > 2) { //  Nombre de jeux total
-        selected_game = 2;
+      if (selected_game > 3) { //  Nombre de jeux total
+        selected_game = 3;
       }
     }
     this->afficheMenu();
