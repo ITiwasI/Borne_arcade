@@ -3,24 +3,20 @@
 
 Row::Row()
 {
-    dim = 7;
-    elements = new char[dim];
-    for (int i=0; i<dim; i++) 
-    {
-        elements[i] = '-';
-    }
+    elements.resize(7);
+    std::fill(elements.begin(), elements.end(), '-');
 }
 
 Row::~Row()
 {
-    delete[] elements;
+    
 }
 
 void Row::DisplayRow()
 {
-    for (int i=0; i<dim; i++)
+    for (char c : elements)
     {
-        Serial.print(elements[i]);
+        Serial.print(c);
         Serial.print(" ");
     }
     Serial.println(" ");

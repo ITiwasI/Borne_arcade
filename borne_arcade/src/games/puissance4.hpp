@@ -3,10 +3,13 @@
 
 #include "game.h"
 #include "../components/button.h"
+#include "puissance4/grid.hpp"
 
 class puissance4 : public game {
   private :
-    bool end;
+    Grid grid4;
+    int push;
+    char CurrentPlayer;
   
   public : 
     puissance4();
@@ -14,6 +17,7 @@ class puissance4 : public game {
 
     void init(void);
     void run(void);
+    void end(void);
     
     button rightButton;
     button centerButton;

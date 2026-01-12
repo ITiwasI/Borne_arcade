@@ -1,6 +1,3 @@
-#include <stdlib.h>
-using namespace std;
-
 #ifndef _grid_hpp_
 #define _grid_hpp_
 
@@ -8,15 +5,21 @@ using namespace std;
 
 class Grid {
     public:
-        Row** grid;;
+        char CurrentPlayer;
+        int push;
+    
+        std::vector<Row> grid;
 
         Grid();
         ~Grid();
 
+        void InitialiseGrid();
         void DisplayGrid();
         void AddPiece(char Player, int C);
         bool isGridFull();
         char isWinner();
+
+        Row& operator[](int i) {return grid[i]; }
 };
 
 #endif

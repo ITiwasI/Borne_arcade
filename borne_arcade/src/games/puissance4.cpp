@@ -1,77 +1,107 @@
 #include "puissance4.hpp"
 #include "puissance4/grid.hpp"
 
-puissance4::puissance4() : game() {
-}
-puissance4::~puissance4() {
-}
-
-void puissance4::init() {
-    rightButton.init(5);
-    centerButton.init(4);
-
+puissance4::puissance4() : game() 
+{
+  
 }
 
 
-void puissance4::run(void) {
-  int push = 1;
-  char CurrentPlayer = 'A';
-  Grid grid4;
+puissance4::~puissance4() 
+{
+  
+}
+
+
+void puissance4::init() 
+{
+  Serial.println("");
+  Serial.println("Le jeu commence...");
+  grid4.InitialiseGrid(); 
   grid4.DisplayGrid();
+  
+  push = 1;
+  CurrentPlayer = 'A';
+  
+  rightButton.init(5);
+  centerButton.init(4);
+}
 
-  while ((grid4.isGridFull() != 1) and (grid4.isWinner() == '/')) 
+
+void puissance4::run(void) 
+{
+  if ((grid4.isGridFull() == 1) or (grid4.isWinner() != '/')) 
+  {
+    this->end();
+    return;
+  }
+  
+  Serial.print("Joueur Actuel: ");
+  Serial.println(CurrentPlayer);
+  
+  push = 1;
+  Serial.print("Colonne Actuelle: ");
+  Serial.println(push);
+  
+  while (!centerButton.isPressed())
+  {
+    if (rightButton.isPressed()) 
     {
-      Serial.print("Joueur Actuel: ");
-      Serial.println(CurrentPlayer);
+      push += 1;
+      if (push > 7)
+      {
+        push = 1;
+      }
       
-      push = 1;
-      Serial.print("Colonne Actuelle: ");
+      Serial.print("ColonneAct: ");
       Serial.println(push);
       
-      while (!centerButton.isPressed())
-      {
-        if (rightButton.isPressed()) 
-        {
-          push += 1;
-          if (push > 7)
-          {
-            push = 1;
-          }
-
-          Serial.print("ColonneAct: ");
-          Serial.println(push);
-
-          delay(200);
-        }
-      }
-
-      grid4.AddPiece(CurrentPlayer, push-1);
-      grid4.DisplayGrid();
-
-      if (CurrentPlayer == 'A')
-      {CurrentPlayer = 'B';}
-      else
-      {CurrentPlayer = 'A';}
-
       delay(200);
     }
-
-
-    if (grid4.isWinner() == 'X'){
-      Serial.println("Joueur A a gagne");
-    }
-
-    if (grid4.isWinner() == 'O'){
-      Serial.println("Joueur B a gagne");
-    }
-    
-    if (grid4.isGridFull() == 1){
-      Serial.println("Match null !");
-    }
-
   }
+  
+  grid4.AddPiece(CurrentPlayer, push-1);
+  grid4.DisplayGrid();
+  
+  if (CurrentPlayer == 'A')
+  {CurrentPlayer = 'B';}
+  else
+  {CurrentPlayer = 'A';}
+  
+  delay(200);
+  
+}
 
-    
 
-    
+void puissance4::end(void) 
+{
+  if (grid4.isWinner() == 'X')
+  {
+    Serial.println("Joueur A a gagne !");
+  }
+  
+  if (grid4.isWinner() == 'O')
+  {
+    Serial.println("Joueur B a gagne !");
+  }
+  
+  if (grid4.isGridFull() == 1)
+  {
+    Serial.println("Match null !");
+  }
+  
+  Serial.println("");
+  delay(500);
+  Serial.println("Appuyez sur le bouton central pour rejouer");
+  Serial.println("ou sur tous les boutons pour changer de jeu");
+  if (centerButton.isPressed())
+  {
+    delay(500);
+    this->init();
+  }
+  
+}
+
+
+
 

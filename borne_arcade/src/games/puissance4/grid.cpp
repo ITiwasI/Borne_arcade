@@ -5,21 +5,32 @@
 
 Grid::Grid()
 {
-    grid = new Row*[6];
-    for (int i=0; i<6; i++)
-    {
-        grid[i] = new Row();
-    }
+    // grid.resize(6);
+    // for (int i=0; i<6; i++)
+    // {
+    //     grid[i]=Row();
+    // }
 }
+
 
 Grid::~Grid()
 {
+    
+}
+
+
+void Grid::InitialiseGrid()
+{
+    grid.resize(6);
     for (int i=0; i<6; i++)
     {
-        delete grid[i];
+        for (int j=0; j<7; j++)
+        {
+            grid[i][j]='-';
+        }
     }
-    delete[] grid;
 }
+
 
 void Grid::DisplayGrid()
 {
@@ -27,12 +38,7 @@ void Grid::DisplayGrid()
     Serial.println("Voici la grille de jeu :");
     for (int i=0; i<6; i++) 
     {
-        for (int j=0; j<7; j++)
-        {
-            Serial.print(grid[i]->elements[j]);
-            Serial.print(" ");
-        }
-        Serial.println(" ");
+        grid[i].DisplayRow();
     }
 }
 
@@ -40,15 +46,15 @@ void Grid::AddPiece(char Player, int C)
 {
     for (int i=5; i>=0; i--)
     {
-        if (grid[i]->elements[C] == '-')
+        if ((*this)[i][C] == '-')
         {
             switch (Player)
             {
                 case 'A':
-                    grid[i]->elements[C] = 'X';
+                    (*this)[i][C] = 'X';
                     break;
                 case 'B':
-                    grid[i]->elements[C] = 'O';
+                    (*this)[i][C] = 'O';
                     break;
             }
             return;
@@ -66,7 +72,7 @@ bool Grid::isGridFull()
     {
         for (int j=0; j<7; j++)
         {
-            if ((grid[i]->elements[j]) == '-')
+            if (((*this)[i][j]) == '-')
             {
                 Full = false;
             }
@@ -82,7 +88,7 @@ char Grid::isWinner() // retourne X si A gagne, O si B gagne, / si pas de gagnan
     {
         for (int j=0; j<7; j++) // on parcourt sur les colonnes
         {
-            char CurrentPiece = (grid[i] -> elements[j]);
+            char CurrentPiece = ((*this)[i][j]);
             
             if (CurrentPiece == '-')
             {
@@ -91,7 +97,7 @@ char Grid::isWinner() // retourne X si A gagne, O si B gagne, / si pas de gagnan
 
             if (j+3 < 7) // Verifications horizontales
             {
-                if ((CurrentPiece == (grid[i] -> elements[j+1])) && (CurrentPiece == (grid[i] -> elements[j+2])) && (CurrentPiece == (grid[i] -> elements[j+3])))
+                if ((CurrentPiece == ((*this)[i][j+1])) && (CurrentPiece == ((*this)[i][j+2])) && (CurrentPiece == ((*this)[i][j+3])))
                 {
                     return CurrentPiece;
                 }
@@ -99,7 +105,7 @@ char Grid::isWinner() // retourne X si A gagne, O si B gagne, / si pas de gagnan
             
             if (i+3 < 6) // Verifications verticales
             {
-                if ((CurrentPiece == (grid[i+1] -> elements[j])) && (CurrentPiece == (grid[i+2] -> elements[j])) && (CurrentPiece == (grid[i+3] -> elements[j])))
+                if ((CurrentPiece == ((*this)[i+1][j])) && (CurrentPiece == ((*this)[i+2][j])) && (CurrentPiece == ((*this)[i+3][j])))
                 {
                     return CurrentPiece;
                 }
@@ -107,7 +113,7 @@ char Grid::isWinner() // retourne X si A gagne, O si B gagne, / si pas de gagnan
 
             if ((i+3 < 6) && (j+3 < 7)) // Verifications diagonales descentes bas-droite
             {
-                if  ((CurrentPiece == (grid[i+1] -> elements[j+1])) && (CurrentPiece == (grid[i+2] -> elements[j+2])) && (CurrentPiece == (grid[i+3] -> elements[j+3])))
+                if  ((CurrentPiece == ((*this)[i+1][j+1])) && (CurrentPiece == ((*this)[i+2][j+2])) && (CurrentPiece == ((*this)[i+3][j+3])))
                 {
                     return CurrentPiece;
                 }
@@ -116,7 +122,7 @@ char Grid::isWinner() // retourne X si A gagne, O si B gagne, / si pas de gagnan
 
             if ((i+3 < 6) && (j-3 >= 0)) // Verifications diagonales montantes bas-gauche
             {
-                if  ((CurrentPiece == (grid[i+1] -> elements[j-1])) && (CurrentPiece == (grid[i+2] -> elements[j-2])) && (CurrentPiece == (grid[i+3] -> elements[j-3])))
+                if  ((CurrentPiece == ((*this)[i+1][j-1])) && (CurrentPiece == ((*this)[i+2][j-2])) && (CurrentPiece == ((*this)[i+3][j-3])))
                 {
                     return CurrentPiece;
                 }
