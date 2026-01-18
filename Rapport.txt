@@ -18,7 +18,7 @@ Puis, nous avons chacun conçu un jeu selon nos envies. Et enfin, nous avons mis
 
 
 3) Matériel utilisé
-Pour réaliser ce projet, nous avons utilisé une carte ProMicro avec cinq boutons : quatre pour les déplacements sur l'écran et un bouton central pour la sélection. 
+Pour réaliser ce projet, nous avons utilisé une carte Arduino Pro Micro avec cinq boutons : quatre pour les déplacements sur l'écran et un bouton central pour la sélection. 
 Le Serial Monitor de l'IDE Arduino permet l'affichage du jeu (cf « Difficultés rencontrées » .3).
 
 
@@ -35,6 +35,11 @@ Pour faire fonctionner le projet, il est nécessaire au préalable de téléchar
 - Au départ, nous avions l'intention d'utiliser le logiciel Processing pour l'affichage des jeux, malheureusement manque de temps, nous avons dû nous rabattre sur la solution la plus simple à mettre en œuvre, qui est l'affichage grâce au Serial Monitor de l'IDE Arduino.
 
 
-6) Annexe : Diagramme de classes
+6) Annexes : 
+- Diagramme de classes
 Vous trouverez sur ce lien le diagramme de classes du projet : 
 https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Class_diagram_arduino.drawio&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1QxrEqJkXbuR19Iquu7PYdhVdxDtMyf1Q%26export%3Ddownload
+
+- Carte :
+Sur le drive vous trouverez des photos de la carte réalisée sur protoboard.
+https://drive.google.com/drive/folders/13YofSCYmdY4PcoQkTHzY3wODKRrmxLV9?usp=drive_link
