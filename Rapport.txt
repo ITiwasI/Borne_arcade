@@ -9,16 +9,17 @@ HORION-COUDENE Claire
 
 
 1) Présentation du projet
-Nous avons conçu une "borne arcade" comportant trois jeux : 1 puissance 4, 1 puissance 4 version retro et 1 jeu d'échecs. Un menu au démarrage permet la sélection du jeu, puis au cours de n’importe quel jeu, il est possible de revenir au menu principal en appuyant sur les cinq boutons en simultané. Aussi, à la fin de chaque jeu, si les joueurs souhaite recommencer la partie, ils peuvent sélectionner le bouton central pour réinitialiser le jeu.
+Nous avons conçu une "borne arcade" comportant trois jeux : 1 puissance 4, 1 puissance 4 version retro et 1 jeu d'échecs. Un menu au démarrage permet la sélection du jeu, puis au cours de n’importe quel jeu, il est possible de revenir au menu principal en appuyant sur les cinq boutons de façon simultanée. Aussi, à la fin de chaque jeu, si le joueur souhaite recommencer la partie, il peut sélectionner le bouton central pour réinitialiser le jeu.
 
 
 2) Déroulement de la conception
-Le choix du projet n’est pas évident, puis nous avions découvert que nous avions tous envie de créer un jeu, et donc nous pourrions les rassembler dans une borne d’arcade. Nous avons ensuite réfléchi sur la conception générale du projet, notamment au sujet des classes « application » et « game ». 
-Puis, nous avons chacun conçu un jeu selon nos envies. Et enfin, nous avons mis en commun le travail. Et enfin, nous avons créé l'interface pour la sélection du jeu, ainsi que la possibilité de retourner au menu principal et tester notre borne d’arcade pour s’assurer de son bon fonctionnement. 
+Le choix du projet n’a pas été évident, puis nous avons découvert que nous avions tous envie de créer un jeu, et donc nous pourrions les rassembler dans une borne d’arcade. Nous avons ensuite réfléchi sur la conception générale du projet, notamment au sujet des classes « application » et « game ». 
+Puis, nous avons chacun conçu un jeu selon nos envies. Nous avons ajouté notre programme sur Github, en se créant une propre branche. Et enfin, nous avons mis en commun le travail, ce qui nous a posé problème pour rassembler les programmes sur la branche "main" du Github. Cela n'a pas été une tâche aisée à cause de notre niveau de débutant sur Github. Et enfin, nous avons créé l'interface pour la sélection du jeu, ainsi que la possibilité de retourner au menu principal et nous avons testé notre borne d’arcade pour s’assurer de son bon fonctionnement. 
+En annexe, vous trouverez le diagramme de classes du projet.
 
 
 3) Matériel utilisé
-Pour réaliser ce projet, nous avons utilisé une carte Arduino Pro Micro avec cinq boutons : quatre pour les déplacements sur l'écran et un bouton central pour la sélection. 
+Pour réaliser ce projet, nous avons utilisé une carte Arduino Pro Micro avec cinq boutons : quatre pour les déplacements sur l'écran et un bouton central pour la sélection. En annexe, nous avons ajouté deux photos de la carte réalisée.
 Le Serial Monitor de l'IDE Arduino permet l'affichage du jeu (cf « Difficultés rencontrées » .3).
 
 
